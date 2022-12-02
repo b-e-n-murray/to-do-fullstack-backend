@@ -35,7 +35,7 @@ app.get("/", (req, res) => {
 });
 
 // GET /items
-app.get("/items", (req, res) => {
+app.get("/todos", (req, res) => {
   const allSignatures = getAllDbItems();
   res.status(200).json(allSignatures);
 });
