@@ -7,21 +7,23 @@ export interface DbItemWithId extends DbItem {
   id: number;
 }
 
-const db: DbItemWithId[] = [ {
-  todo: "feed dog",
-  id: 1
- },
- {
-  todo: "take a nap",
-  id: 2
- },
- {
-  todo: "hit the gym",
-  id: 3
- }];
+const db: DbItemWithId[] = [
+  {
+    todo: "feed dog",
+    id: 1
+  },
+  {
+    todo: "take a nap",
+    id: 2
+  },
+  {
+    todo: "hit the gym",
+    id: 3
+  }
+];
 
 /** Variable to keep incrementing id of database items */
-let idCounter = 0;
+let idCounter = 3;
 
 /**
  * Adds in some dummy database items to the database
@@ -31,9 +33,9 @@ let idCounter = 0;
  */
 export const addDummyDbItems = (n: number): DbItemWithId[] => {
   const createdSignatures: DbItemWithId[] = [];
-  for (let count = 0; count < 0; count++) {
+  for (let count = 0; count < 20; count++) {
     const createdSignature = addDbItem({
-      todo: ""
+      todo: "body of to-do. count is" + count
     });
     createdSignatures.push(createdSignature);
   }

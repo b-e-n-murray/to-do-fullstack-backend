@@ -13,7 +13,7 @@ import filePath from "./filePath";
 
 // loading in some dummy items into the database
 // (comment out if desired, or change the number)
-addDummyDbItems(20);
+// addDummyDbItems(20);
 
 const app = express();
 
@@ -41,7 +41,7 @@ app.get("/todos", (req, res) => {
 });
 
 // POST /items
-app.post<{}, {}, DbItem>("/items", (req, res) => {
+app.post<{}, {}, DbItem>("/todos", (req, res) => {
   // to be rigorous, ought to handle non-conforming request bodies
   // ... but omitting this as a simplification
   const postData = req.body;
@@ -50,7 +50,7 @@ app.post<{}, {}, DbItem>("/items", (req, res) => {
 });
 
 // GET /items/:id
-app.get<{ id: string }>("/items/:id", (req, res) => {
+app.get<{ id: string }>("/todos/:id", (req, res) => {
   const matchingSignature = getDbItemById(parseInt(req.params.id));
   if (matchingSignature === "not found") {
     res.status(404).json(matchingSignature);
@@ -60,7 +60,7 @@ app.get<{ id: string }>("/items/:id", (req, res) => {
 });
 
 // DELETE /items/:id
-app.delete<{ id: string }>("/items/:id", (req, res) => {
+app.delete<{ id: string }>("/todos/:id", (req, res) => {
   const matchingSignature = getDbItemById(parseInt(req.params.id));
   if (matchingSignature === "not found") {
     res.status(404).json(matchingSignature);
